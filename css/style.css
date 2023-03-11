@@ -187,3 +187,13 @@ li button:active {
   background-color: #4CAF50;
 }
 
+@media screen and (max-width: 768px) {
+  .columns {
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .column {
+    width: 80%;
+  }
+}
