@@ -26,6 +26,7 @@ function createTodos() {
   todoList.innerHTML = "";
   inProgressList.innerHTML = "";
   doneList.innerHTML = "";
+
   todos.forEach((todo, index) => {
     const li = document.createElement("li");
     li.innerText = todo.text;
@@ -37,8 +38,43 @@ function createTodos() {
       saveTodos();
       createTodos();
     });
+    switch (todo.status) {
+      case "new":
+        const inProgressBtn = document.createElement("button");
+        inProgressBtn.innerText = "In Progress >";
+        inProgressBtn.addEventListener("click", () => {
+          todos[index].status = "inProgress";
+          saveTodos();
+          createTodos();
+        });
+        li.append(inProgressBtn);
+        li.append(deleteBtn);
+        todoList.append(li);
+        break;
+      case "inProgress":
+        const doneBtn = document.createElement("button");
+        doneBtn.innerText = "Done >";
+        doneBtn.addEventListener("click", () => {
+          todos[index].status = "done";
+          saveTodos();
+          createTodos();
+        });
+        li.append(doneBtn);
+        li.append(deleteBtn);
+        inProgressList.appendChild(li);
+        break;
+      case "done":
+        deleteBtn.innerText = "Delete";
+        deleteBtn.classList.remove('deleteBtn')
+        li.append(deleteBtn);
+        doneList.append(li);
+        break;
+      default:
+        break;
+    }
   });
 }
+
 
 addBtn.addEventListener("click", addTodo);
 
