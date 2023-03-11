@@ -187,10 +187,25 @@ li button:active {
   background-color: #4CAF50;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
+
+  .header {
+    flex-direction: column;
+    padding: 50px;
+  }
+
+  .header button{
+    width: 100px;
+  }
+
+  .header h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
   .columns {
     flex-direction: column;
-    gap: 50px;
+    gap: 20px;
+    align-items: center;
   }
 
   .column {
